@@ -119,6 +119,12 @@ public class ValidationItemControllerV2 {
     @PostMapping("/add")
     public String addItemV3(@ModelAttribute Item item, BindingResult bindingResult, RedirectAttributes redirectAttributes, Model model) {
 
+        /* 오류 메시지가 2개 보이니까 앞에 입력해서 1개만 보이도록 할 수 있다. 선택하면 되는 거지만 일반적으로 앞에 많이 쓴다.
+        if (bindingResult.hasErrors()) {
+            log.info("errors = {}", bindingResult);
+            return "validation/v2/addForm";
+        }*/
+
         log.info("objectName={}", bindingResult.getObjectName());
         log.info("target={}", bindingResult.getTarget());
 
