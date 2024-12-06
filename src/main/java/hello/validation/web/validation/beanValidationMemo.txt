@@ -6,6 +6,9 @@
 *Bean Validation 이란?
 검증 애노테이션과 여러 인터페이스의 모음이다. (JPA가 표준 기술이고 그 구현체로 하이버네이트가 있는 것과 같다.)
 Bean Validation을 구현한 기술중에 일반적으로 사용하는 구현체는 하이버네이트 Validator이다. (이름이 하이버네이트가 붙어서 그렇지 ORM과는 관련이 없다.)
+    ↳ JPA를 사용하기 위해서는 JPA를 구현한 Hibernate, EclipseLink, DataNucleus 같은 ORM 프레임워크를 사용해야 합니다. (JPA는 특정 기능을 하는 라이브러리가 아니고, ORM을 사용하기 위한 인터페이스를 모아둔 것입니다.)
+      Hibernate는 JPA의 구현체 중 하나입니다. (Hibernate는 SQL을 사용하지 않고 직관적인 코드(메소드)를 사용해 데이터를 조작할 수 있습니다.)
+      JPA와 Hibernate는 마치 자바의 interface와 해당 interface를 구현한 class와 같은 관계입니다.
 
 공식 사이트: http://hibernate.org/validator/
 공식 메뉴얼: https://docs.jboss.org/hibernate/validator/6.2/reference/en-US/html_single/
