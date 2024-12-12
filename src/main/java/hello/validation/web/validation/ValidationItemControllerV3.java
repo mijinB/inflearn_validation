@@ -75,7 +75,6 @@ public class ValidationItemControllerV3 {
 
         // 특정 필드가 아닌 복합 룰 검증
         if (item.getPrice() != null && item.getQuantity() != null) {
-            log.info("price={}, quantity={}, price*quantity={}", item.getPrice(), item.getQuantity(), item.getPrice()*item.getQuantity());
             int resultPrice = item.getPrice() * item.getQuantity();
             if (resultPrice < 10000) {
                 bindingResult.reject("totalPriceMin", new Object[]{10000, resultPrice}, null);
