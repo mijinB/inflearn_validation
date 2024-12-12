@@ -14,7 +14,7 @@ public class ValidationApplication implements WebMvcConfigurer {
 		SpringApplication.run(ValidationApplication.class, args);
 	}
 
-	/* validator 글로벌 설정
+	/* validator 글로벌 설정 ⇒ 이렇게 직접 Global Validator 를 직접 등록하면 Spring boot 는 Bean Validator 를 Global Validator 로 등록하지 않는다. 따라서 어노테이션 기반의 Bean Validator 가 동작하지 않게 된다.
 	@Override
 	public Validator getValidator() {
 		return new ItemValidator();
