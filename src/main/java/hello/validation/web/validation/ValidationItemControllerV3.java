@@ -46,12 +46,18 @@ public class ValidationItemControllerV3 {
     }
 
     @PostMapping("/add")
-    public String addItem(@Validated @ModelAttribute Item item, BindingResult bindingResult, RedirectAttributes redirectAttributes) {     // @Validated 나 @Valid 나 검증하는 건 똑같아서 아무거나 사용해도 되지만, 약간의 차이점이 있다. (Bean Validation 에서 설명)
+    public String addItem(@Validated @ModelAttribute Item item, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
 
-        // 검증에 실패하면 다시 입력 폼으로
+        // 특정 필드가 아닌 복합 룰 검증
+        if (item.getPrice() != null && item.getQuantity() != null) {
+            int resultPrice = item.getPrice() * item.getQuantity();
+            if (resultPrice < 10000) {
+                bindingResult.reject("totalPriceMin", new Object[]{10000, resultPrice}, null);
+            }
+        }
+
         if (bindingResult.hasErrors()) {
             log.info("errors = {}", bindingResult);
-            // bindingResult 는 자동으로 view 로 보내주기 때문에 model.Attribute 해줄 필요가 없다.
             return "validation/v3/addForm";
         }
 
